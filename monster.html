@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #cfe3d1;
+            font-family: 'Nanum Brush Script', cursive;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            transition: 0.3s;
+        }
+        #mainpage{
+            width: 100%;
+            height: 100%;
+        }
+        #mainlogo{
+            width: 450px;
+            height: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-230px, -100px);
+        }
+        .eyewrap{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto;
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .topeyecover{
+            background: #4fc0e0;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            top: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }
+        .bottomeyecover{
+            background: #4fc0e0;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            bottom: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }  
+        .eye{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            transform: translateY(35px);
+        }
+        .m_eye{
+            position: absolute;
+            bottom: 0;
+            left: 45px;
+            width: 10px;
+            height: inherit;
+        }
+        .m_eye:before{
+            content: "";
+            clear: both;
+            display: block;
+            background: black;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;         
+        }
+        #m{
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+        #n{
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+        #mainbtn{
+            width: 200px;
+            height: 50px;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-100px);
+            line-height: 50px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #292929;
+            transition: 0.2s;
+        }
+        #mainbtn:hover{
+            cursor: pointer;
+            color: #696969;
+        }
+        #monbtncenter{
+            width: 100px;
+            height: 100px;
+            background: #eaeaea;
+            position: absolute;
+            bottom: 50%;
+            left: -200px;
+            margin-top: -55px;
+            z-index: 999;
+            border-radius: 50%;
+            transition: 0.5s;
+        }
+        .monbtn{
+            position: absolute;
+            left: -100%;
+            top: 20px;
+            width: 60px;
+            height: 60px;
+            background: black;
+            border-radius: 50%;
+            transform-origin: 150px;
+            opacity: 70%;
+        }
+        .monbtn:hover{
+            opacity: 50%;
+            cursor: pointer;
+        }
+        #monbtn1{
+            transform: rotate(60deg);
+        }
+        #monbtn2{
+            transform: rotate(180deg);
+        }
+        #monbtn3{
+            transform: rotate(300deg);
+        }
+/*        -------------------첫번째몬스터페이지----------------------------------------------------------------------*/
+        #firstmonpage{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #ff9999;
+            display: none;
+            z-index: 103;
+            right: 0;
+            top: 0;
+        }
+        .eyewrap2{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto;
+            position: relative;
+            display: none;
+        }
+        #bottomeyeshadow{
+            background: url(eyeshadow.png) no-repeat;
+            background-size: cover;
+            width: 130px;
+            height: 50px;
+            position: absolute;
+            bottom: -45px;
+        }
+        #topeyeshadow{
+            background: url(eyeshadowup.png) no-repeat;
+            background-size: cover;
+            width: 130px;
+            height: 50px;
+            position: absolute;
+            top: -28px;
+        }
+        .topeyecover2{
+            background: #ff9999;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            top: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }
+        .bottomeyecover2{
+            background: #ff9999;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            bottom: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }  
+        .eye2{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            transform: translateY(35px);
+        }
+        .m_eye2{
+            position: absolute;
+            bottom: 0;
+            left: 45px;
+            width: 10px;
+            height: inherit;
+        }
+        .m_eye2:before{
+            content: "";
+            clear: both;
+            display: block;
+            background: black;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;         
+        }
+/*        -------------------------------위아래이빨--------------------------------------------*/
+        #upcover, #downcover{
+            position: absolute;
+            width: 100%;
+            height: 0%;
+            background: blue;
+/*            transition: 1.5s;*/
+            z-index: 101;
+        }
+        #upcover{
+            top: 0;
+        }
+        #upcover #tooboxwrap{
+            width: 100%;
+            position: absolute;
+            bottom:0px;
+        }
+        #upcover .toobox{
+            width: 10%; 
+            float: left;
+        }
+        #upcover .too{
+            background: white;
+            width: 0%;
+            height: 0%;
+            border-top: 150px solid white;
+            border-left: 50px solid blue;
+            border-right: 50px solid blue;
+        }
+        #downcover{
+            bottom: 0;
+        }
+        #downcover #tooboxwrap{
+            width: 100%;
+            position: absolute;
+            top:0px;
+        }
+        #downcover .toobox{
+            width: 10%; 
+            float: left;
+        }
+        #downcover .too{
+            background: white;
+            width: 0%;
+            height: 0%;
+            border-bottom: 150px solid white;
+            border-left: 50px solid blue;
+            border-right: 50px solid blue;
+        }
+/*        ----------------------------두번재몬스터페이지---------------------------------------------------*/
+        #secondmonpage{
+            width: 100%;
+            height: 100%;
+            display: none;
+            right: 0;
+            position: absolute;
+            z-index: 103;
+            background: #9ecaff;
+        }
+        #secondmonpage #eyewrapbox{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 150px;
+            transform: translate(-150px,-150px);
+        }
+ /*        ----------------------------세번째몬스터페이지---------------------------------------------------*/       
+        #thirdmonpage{
+            width: 100%;
+            height: 100%;
+            display: none;
+            right: 0;
+            position: absolute;
+            z-index: 103;
+            background: #f5ffc2;
+        }
+        #thirdmonpage #eyewrapbox{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 150px;
+            transform: translate(-150px,-150px);
+        }
+    </style>
+    <script>
+        $(function(){
+            
+            var eye = document.querySelector(".eye");
+            var m_eye = eye.querySelector(".m_eye");
+            var eyediv = eye.getBoundingClientRect();
+            
+            var movingeye = function(mouseX, mouseY){
+                var radian = Math.atan2(mouseY - (eyediv.y+eyediv.height*0.5), mouseX - (eyediv.x+eyediv.width*0.5));
+                m_eye.style.transform = 'rotate('+ (180 * radian / Math.PI - 270) +'deg)';
+            };
+            
+            window.addEventListener("mousemove", function(e){
+                movingeye(e.clientX, e.clientY);
+            });
+            
+//            --------------------------눈알굴리기-----------------------------------------
+            
+            setInterval(function(){
+                $(".topeyecover, .bottomeyecover").css({"height":"170px"})
+            },7000);
+            setInterval(function(){
+                $(".topeyecover, .bottomeyecover").css({"height":"0px"})
+            },7050);
+            
+//            ---------------------------눈알깜빡이기--------------------------------------
+          
+            $("#mainbtn").on("click",function(){
+                setTimeout(function(){
+                    $("#mainbtn").animate({"bottom":"-100px"});
+                },300);
+                setTimeout(function(){
+                    $("#mainlogo").animate({"top":"-100%"},1500);
+                },500);
+                setTimeout(function(){
+                    $("body").css({"background":"#ff9999"});
+                    $("#mainpage").css({"display":"none"});
+                },2000);
+                setTimeout(function(){
+                    $("#firstmonpage").css({"display":"block"});
+                },2500);
+                setTimeout(function(){
+                    $("#monbtncenter").css({"left":"-100px"});
+                    $("#mainpage").css({"display":"none"});
+                },3200);
+            });
+            
+            
+//            --------------------------monbtn클릭--------------------------------
+            
+            var eye2 = document.querySelector(".eye2");
+            var m_eye2 = eye2.querySelector(".m_eye2");
+            var eyediv2 = eye2.getBoundingClientRect();
+            
+            var movingeye2 = function(mouseX, mouseY){
+                var radian2 = Math.atan2(mouseY - (eyediv2.y+eyediv2.height*0.5), mouseX - (eyediv2.x+eyediv2.width*0.5));
+                m_eye2.style.transform = 'rotate('+ (180 * radian2 / Math.PI + 90) +'deg)';
+            };
+            
+            window.addEventListener("mousemove", function(e){
+                movingeye2(e.clientX, e.clientY);
+            });
+            
+            setInterval(function(){
+                $(".topeyecover2, .bottomeyecover2").css({"height":"170px"})
+            },7000);
+            setInterval(function(){
+                $(".topeyecover2, .bottomeyecover2").css({"height":"0px"})
+            },7050);
+            
+            
+//            -------------------------------------------------------------------------
+            var maxeye= 1;
+            var num = 0;
+            var eye_rand_wi = 0;
+             $("#firstmonpage").on("click", function(e){
+                 if(maxeye < 8){
+                     
+                     var element = $(".eyewrap2:last-child").clone(true);
+                     $(".eyewrap2").eq(num).css({"display":"block"});
+                     $(".eyewrap2").eq(num).css({"position":"absolute"});
+                     $(".eyewrap2").eq(num).css({"top":e.clientY-75+"px"});
+                     $(".eyewrap2").eq(num).css({"left":e.clientX-75+"px"});
+                     
+                     $("#firstmonpage").append(element);
+                     
+                     maxeye ++;
+                     num ++;
+                 }  
+            });
+            setInterval(function(){
+                if(maxeye > 1){
+                    $(".eyewrap2:last-child").remove();
+                    maxeye --;
+                    num --;
+                }
+            },3000);  
+//            ---------------------------------눈알추가--------------------------
+            var degree = 0;
+            $("#monbtn2").on("click",function(){
+                degree += 120;
+                $("#monbtncenter").css({"transform":"rotate("+degree+ "deg)"});
+                $("#upcover, #downcover").css({"background":"#9ecaff"});
+                $("#upcover .too").css({"border-left-color":"#ff9999"});
+                $("#upcover .too").css({"border-right-color":"#ff9999"});
+                $("#downcover .too").css({"border-left-color":"#ff9999"});
+                $("#downcover .too").css({"border-right-color":"#ff9999"});
+                $("#upcover #tooboxwrap").animate({"bottom":"-150px"});
+                $("#downcover #tooboxwrap").animate({"top":"-150px"});
+                
+                $("#firstmonpage").css({"opacity":"0"});
+                
+                setTimeout(function(){
+                    $("#upcover, #downcover").css({"height":"60%"});
+                    $("#firstmonpage").css({"display":"none"});
+                    setTimeout(function(){
+                        $("#downcover #tooboxwrap").css({"opacity":"0", "transition":"0.1s"});
+                    },530);
+                    
+                },1500);              
+                setTimeout(function(){                   
+                    $("#upcover, #downcover").css({"height":"0%"},0);
+                    $("#upcover #tooboxwrap").animate({"bottom":"0px"},0);
+                    $("#downcover #tooboxwrap").animate({"top":"150px"},0); 
+                    $("#secondmonpage").css({"display":"block"});
+                    $("#downcover #tooboxwrap").css({"opacity":"1"});
+                    
+                    $("body").css({"background":"#9ecaff"});
+                },4000);
+                
+            });
+//            ------------------------첫번째버튼누를시-----------------------------------------------
+            $("#monbtn1").on("click",function(){
+                degree += 120;
+                $("#monbtncenter").css({"transform":"rotate("+degree+ "deg)"});
+                $("#upcover, #downcover").css({"background":"#f5ffc2"});
+                $("#upcover .too").css({"border-left-color":"#9ecaff"});
+                $("#upcover .too").css({"border-right-color":"#9ecaff"});
+                $("#downcover .too").css({"border-left-color":"#9ecaff"});
+                $("#downcover .too").css({"border-right-color":"#9ecaff"});
+                $("#upcover #tooboxwrap").animate({"bottom":"-150px"});
+                $("#downcover #tooboxwrap").animate({"top":"-150px"});
+                
+                $("#secondmonpage").css({"opacity":"0"});
+                
+                setTimeout(function(){
+                    $("#upcover, #downcover").css({"height":"60%"});
+                    $("#secondmonpage").css({"display":"none"});
+                    setTimeout(function(){
+                        $("#downcover #tooboxwrap").css({"opacity":"0", "transition":"0.1s"});
+                    },530);
+                    
+                },1500);              
+                setTimeout(function(){                   
+                    $("#upcover, #downcover").css({"height":"0%"},0);
+                    $("#upcover #tooboxwrap").animate({"bottom":"0px"},0);
+                    $("#downcover #tooboxwrap").animate({"top":"0px"},0); 
+                    $("#thirdmonpage").css({"display":"block"});
+                    $("#downcover #tooboxwrap").css({"opacity":"1"});
+                    
+                    $("body").css({"background":"#f5ffc2"});
+                },4000);
+                
+            });
+//            ------------------------두번째버튼누를시-----------------------------------------------
+             $("#monbtn3").on("click",function(){
+                degree += 120;
+                $("#monbtncenter").css({"transform":"rotate("+degree+ "deg)"});
+                $("#upcover, #downcover").css({"background":"#ff9999"});
+                $("#upcover .too").css({"border-left-color":"#f5ffc2"});
+                $("#upcover .too").css({"border-right-color":"#f5ffc2"});
+                $("#downcover .too").css({"border-left-color":"#f5ffc2"});
+                $("#downcover .too").css({"border-right-color":"#f5ffc2"});
+                $("#upcover #tooboxwrap").animate({"bottom":"-150px"});
+                $("#downcover #tooboxwrap").animate({"top":"-150px"});
+                
+                $("#thirdmonpage").css({"opacity":"0"});
+                
+                setTimeout(function(){
+                    $("#upcover, #downcover").css({"height":"60%"});
+                    $("#thirdmonpage").css({"display":"none"});
+                    setTimeout(function(){
+                        $("#downcover #tooboxwrap").css({"opacity":"0", "transition":"0.1s"});
+                    },530);
+                    
+                },1500);              
+                setTimeout(function(){                   
+                    $("#upcover, #downcover").css({"height":"0%"},0);
+                    $("#upcover #tooboxwrap").animate({"bottom":"0px"},0);
+                    $("#downcover #tooboxwrap").animate({"top":"0px"},0); 
+                    $("#firstmonpage").css({"display":"block"});
+                    $("#downcover #tooboxwrap").css({"opacity":"1"});
+                         
+                    $("body").css({"background":"#ff9999"});
+                },4000);
+                 
+            });
+//            ------------------------세번째버튼누를시----------------------------------------------
+        });
+    </script>
+</head>
+<body>
+<div id="monbtncenter">
+    <div id="monbtn1" class="monbtn">2</div>
+    <div id="monbtn2" class="monbtn">1</div>
+    <div id="monbtn3" class="monbtn">3</div>
+</div>
+
+<div id="upcover">
+        <div id="tooboxwrap">
+           <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+        </div>
+</div>
+<div id="downcover">
+    <div id="tooboxwrap">
+           <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+            <div class="toobox">
+                <div class="too"></div>
+            </div>
+        </div>
+</div>
+ 
+    <div id="mainpage">
+      <div id="mainlogo">
+          <img src="m.png" alt="" id="m">
+           <div class="eyewrap">
+               <div class="topeyecover"></div>
+                <div class="eye">
+                    <div class="m_eye"></div>
+                </div>
+                <div class="bottomeyecover"></div>
+            </div>
+            <img src="n.png" alt="" id="n">
+        </div>
+
+        <div id="mainbtn">
+            <p>EXPLORE</p>
+        </div>
+    </div>
+    
+       <div id="firstmonpage">
+        <div class="eyewrap2">
+           <div id="topeyeshadow"></div>
+            <div class="topeyecover2"></div>
+            <div class="eye2">
+                <div class="m_eye2"></div>
+            </div>
+            <div class="bottomeyecover2"></div>
+            <div id="bottomeyeshadow"></div>
+        </div>
+
+    </div>
+    
+    <div id="secondmonpage">
+       <div id="eyewrapbox">
+            <div class="eyewrap">
+                <div class="topeyecover"></div>
+                    <div class="eye">
+                        <div class="m_eye"></div>
+                    </div>
+                <div class="bottomeyecover"></div>
+            </div>
+            <div class="eyewrap">
+                <div class="topeyecover"></div>
+                    <div class="eye">
+                        <div class="m_eye"></div>
+                    </div>
+                <div class="bottomeyecover"></div>
+            </div>
+        </div>
+    </div>
+    <div id="thirdmonpage">
+       <div id="eyewrapbox">
+            <div class="eyewrap">
+                <div class="topeyecover"></div>
+                    <div class="eye">
+                        <div class="m_eye"></div>
+                    </div>
+                <div class="bottomeyecover"></div>
+            </div>
+            <div class="eyewrap">
+                <div class="topeyecover"></div>
+                    <div class="eye">
+                        <div class="m_eye"></div>
+                    </div>
+                <div class="bottomeyecover"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,486 @@
+@charset utf-8;
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{       
+            font-family: 'Nanum Brush Script', cursive;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        #mainpage{
+            background: #cfe3d1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 99;
+            top: 0;
+        }
+        #mainlogo{
+            width: 450px;
+            height: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-230px, -100px);
+        }
+        .eyewrap{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto;
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .topeyecover{
+            background: #4fc0e0;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            top: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }
+        .bottomeyecover{
+            background: #4fc0e0;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            bottom: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }  
+        .eye{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            transform: translateY(35px);
+        }
+        .m_eye{
+            position: absolute;
+            bottom: 0;
+            left: 45px;
+            width: 10px;
+            height: inherit;
+        }
+        .m_eye:before{
+            content: "";
+            clear: both;
+            display: block;
+            background: black;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;         
+        }
+        #m{
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+        #n{
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+        #mainbtn{
+            width: 200px;
+            height: 50px;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-100px);
+            line-height: 50px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #292929;
+            transition: 0.2s;
+        }
+        #mainbtn:hover{
+            cursor: pointer;
+            color: #696969;
+        }
+/*        --------------------------------메인페이지-----------------------------------*/
+        
+        #monbtncenter{
+            width: 100px;
+            height: 100px;
+            background: #eaeaea;
+            position: absolute;
+            bottom: 50%;
+            left: -200px;
+            margin-top: -55px;
+            border-radius: 50%;
+            transition: 0.5s;
+            z-index: 1000;
+        }
+        .monbtn{
+            position: absolute;
+            left: -100%;
+            top: 20px;
+            width: 60px;
+            height: 60px;
+            background: black;
+            border-radius: 50%;
+            transform-origin: 150px;
+            opacity: 70%;
+        }
+        .monbtn img{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-20px, -22px);
+        }
+        #monbtn3 img{
+            transform: translate(-20px, -25px);
+        }
+        .monbtn:hover{
+            opacity: 50%;
+            cursor: pointer;
+        }
+        #monbtn1{
+            transform: rotate(60deg);
+        }
+        #monbtn2{
+            transform: rotate(180deg);
+        }
+        #monbtn3{
+            transform: rotate(300deg);
+        }
+/*        --------------------------------------------------------------------------------*/
+        #upcover, #downcover{
+            position: absolute;
+            width: 100%;
+            height: 0%;
+            background: blue;
+            z-index: 999;
+            transition: 1.3s;
+            display: none;
+        }
+        #upcover{
+            top: 0;
+        }
+        #tooboxwrapup{
+            width: 100%;
+            position: absolute;
+            top:-150px;
+            z-index: 998;
+            transition: 1.3s;
+        }
+        .toobox{
+            width: 10%; 
+            float: left;
+        }
+        #tooboxwrapup .toobox .too{
+            background: white;
+            width: 0%;
+            height: 0%;
+            border-top: 150px solid white;
+            border-left: 50px solid blue;
+            border-right: 50px solid blue;
+        }
+        #downcover{
+            bottom: 0;
+        }
+        #tooboxwrapdown{
+            width: 100%;
+            position: absolute;
+            bottom:-150px;
+            z-index: 998;
+            transition: 1.3s;
+        }
+        #tooboxwrapdown .toobox .too{
+            background: white;
+            width: 0%;
+            height: 0%;
+            border-bottom: 150px solid white;
+            border-left: 50px solid blue;
+            border-right: 50px solid blue;
+        }
+/*        ----------------------이빨---------------------------------------------------*/
+        #firstmonpage{
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #ff9999;
+            z-index: 99;
+            top: 0;
+        }
+        .eyewrap2{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto;
+            position: relative;
+            top: 35%;
+        }
+        #bottomeyeshadow{
+            background: url(eyeshadow.png) no-repeat;
+            background-size: cover;
+            width: 130px;
+            height: 50px;
+            position: absolute;
+            bottom: -45px;
+        }
+        #topeyeshadow{
+            background: url(eyeshadowup.png) no-repeat;
+            background-size: cover;
+            width: 130px;
+            height: 50px;
+            position: absolute;
+            top: -28px;
+        }
+        .topeyecover2{
+            background: #ff9999;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            top: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }
+        .bottomeyecover2{
+            background: #ff9999;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            bottom: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }  
+        .eye2{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            transform: translateY(35px);
+        }
+        .m_eye2{
+            position: absolute;
+            bottom: 0;
+            left: 45px;
+            width: 10px;
+            height: inherit;
+        }
+        .m_eye2:before{
+            content: "";
+            clear: both;
+            display: block;
+            background: black;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;         
+        }
+        /*--------------------------------첫재페이지-----------------------------------*/
+        #secondmonpage{
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #9ecaff;
+            top: 0;
+            z-index: 99;
+        }
+        #secondmonpage #eyewrapbox{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 150px;
+            transform: translate(-120px,-100px);
+        }
+      #secondmonpage .eyewrap{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto;
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+        #secondmonpage .eyewrap:nth-child(2){
+          float: right;
+        }
+        #secondmonpage .topeyecover{
+            background: #4fc0e0;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            top: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }
+        #secondmonpage .bottomeyecover{
+            background: #4fc0e0;
+            width: 150px;
+            height: 0px;
+            position: absolute;
+            bottom: 0;
+            transition: 0.5s;
+            z-index: 99;
+        }  
+        #secondmonpage .eye{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            transform: translateY(15px);
+        }
+        #secondmonpage .m_eye{
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            width: 10px;
+            height: inherit;
+            transition: 0.2s;
+        }
+        #secondmonpage .m_eye:before{
+            content: "";
+            clear: both;
+            display: block;
+            background: black;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;         
+        }
+        .trace {
+            background: #22c4e0;    
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            transition: 10s;
+            opacity: 1;
+        }
+        /*---------------------------두째페이지----------------------------*/
+        #thirdmonpage{
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #f5ffc2;
+            top: 0;
+            z-index: 99;
+        }
+        #thirdmonpage #eyewrapbox{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 150px;
+            transform: translate(-150px,-150px);
+        }
+        #thirdmonpage .hair{
+            width: 30px;
+            height: 350px;
+            background: #ff9c9c;
+            border-radius: 20% 20% 50% 50%;
+            animation: hairmove 2.5s linear infinite;
+            transform-origin: top;
+            transition: 5s;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+            position: absolute;
+            top: -30px;
+        }
+        button{
+            position: absolute;
+            bottom: 50px;
+        }
+        @keyframes hairmove{
+            0%{
+                transform: rotate(-2deg);
+            }
+            50%{
+                transform: rotate(2deg);
+            }
+            100%{
+                transform: rotate(-2deg);
+            }
+        }
+        #thirdmonpage #eyewrapbox{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 150px;
+            transform: translate(-180px,-150px);
+        }   
+        #thirdmonpage .eyewrap{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto;
+            float: left;
+            position: relative;
+        }
+        #thirdmonpage .eyewrap:nth-child(1){
+            float: right;
+        }
+  
+        #thirdmonpage .eye{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            transform: translateY(20px);
+        }
+        #thirdmonpage .m_eye{
+            position: absolute;
+            bottom: 0;
+            left: 35px;
+            width: 30px;
+            height: inherit;
+            transition: 0.2s;
+            
+        }
+        #thirdmonpage .m_eye:before{
+            content: "";
+            clear: both;
+            display: block;
+            background: black;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;         
+        }
+        #thirdmonpage .eyecover{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: #f5ffc2;
+            border-radius: 50%;
+            top: 60px;
+            left: 230px;
+            z-index: 99;
+        }
+        #thirdmonpage .eyecover:nth-child(2){
+            left: -30px;
+        }
+        #thirdmonpage #button{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-20px);
+            text-align: center;
+            transition: 0.2s;
+            font-size: 20px;
+        }
+        #thirdmonpage #button:hover{
+            cursor: pointer;
+            color: #ccc;
+        }

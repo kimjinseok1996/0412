@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        #hairwrap{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: skyblue;
+        }
+        .hair{
+            width: 30px;
+            height: 350px;
+            background: #ff9c9c;
+            border-radius: 20% 20% 50% 50%;
+            animation: hairmove 2.5s linear infinite;
+            transform-origin: top;
+            transition: 5s;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+            position: absolute;
+            top: -30px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-20px);
+            border: none;
+            outline: none;
+            border-radius: 7px;
+        }
+        button:hover{
+            cursor: pointer;
+            filter: brightness(80%);
+        }
+        @keyframes hairmove{
+            0%{
+                transform: rotate(-2deg);
+            }
+            50%{
+                transform: rotate(2deg);
+            }
+            100%{
+                transform: rotate(-2deg);
+            }
+        }
+        #eyewrapbox{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 150px;
+            transform: translate(-180px,-150px);
+        }   
+        .eyewrap{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto;
+            float: left;
+            position: relative;
+        }
+        .eyewrap:nth-child(1){
+            float: right;
+        }
+  
+        .eye{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            transform: translateY(20px);
+        }
+        .m_eye{
+            position: absolute;
+            bottom: 0;
+            left: 35px;
+            width: 30px;
+            height: inherit;
+            transition: 0.2s;
+            
+        }
+        .m_eye:before{
+            content: "";
+            clear: both;
+            display: block;
+            background: black;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;         
+        }
+        .eyecover{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+            border-radius: 50%;
+            top: 60px;
+            left: 230px;
+            z-index: 99;
+        }
+        .eyecover:nth-child(2){
+            left: -30px;
+        }
+    </style>
+    <script>
+        $(function(){
+            
+            var hairtoggle = 0;
+            
+            for(var i=0; i<49; i++){
+                $(".hair:nth-child("+i+")").css({"left":(i*2)+"%"});
+            }
+            $("#hairwrap").on("mousedown",function(){
+                hairtoggle = 1;
+            });
+            $("#hairwrap").on("mouseup",function(){
+                hairtoggle = 0;
+            });
+
+            $(".hair").on("mouseenter",function(){
+                if(hairtoggle == 1)
+                $(this).css({"margin-top":"200%"});
+            });
+            
+            setInterval(function(){
+                $(".m_eye").css({"transform":"rotate(-50deg)"});
+            },5000);
+            setInterval(function(){
+                $(".m_eye").css({"transform":"rotate(50deg)"});
+            },6000);
+            
+            $("button").on("click",function(){
+                $(".hair").animate({"margin-top":"0"},0);
+            });
+        });  
+    </script>
+</head>
+<body>
+    <div id="hairwrap">
+           
+           <div id="eyewrapbox">
+            <div class="eyewrap">
+                    <div class="eye">
+                        <div class="m_eye"></div>
+                    </div>
+            </div>
+            <div class="eyecover"></div>
+            <div class="eyewrap">
+                <div class="topeyecover"></div>
+                    <div class="eye">
+                        <div class="m_eye"></div>
+                    </div>
+                <div class="bottomeyecover"></div>
+            </div>
+            <div class="eyecover"></div>
+        </div>
+           
+            
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>  
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>  
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>  
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>  
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>  
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            <div class="hair"></div>
+            
+            <button>머리붙이기</button>
+    </div>
+</body>
+</html>
